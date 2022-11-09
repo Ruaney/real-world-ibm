@@ -1,0 +1,144 @@
+<!-- <div *ngIf="articles$ | async as articles ">
+  <div *ngFor="let art of articles">
+    {{art.author.username}}
+    {{art.author.image}}
+    {{art.slug}}
+    {{art.favoritesCount}}
+    {{art.description}}
+    {{art.tagList}}
+    <hr>
+
+  </div>
+</div> -->
+<!-- ordemm 
+  lado esquerdo           |||||| lado direido
+ imagem, nome perfil,data |||||| quantidade de likes
+ slug
+ description
+ button readmore...       |||||| tags
+-->
+
+<nav>
+  <p class="nav-paragraph"> <a routerLink="/home">conduit</a></p>
+  <ul class="nav-list">
+    <li class="nav-item"><a routerLink="/home">Home</a></li>
+
+    <li class="nav-item nav-item-icon">
+      <a href="#"><i class="ion-compose"></i> New Article</a>
+    </li>
+    <li class="nav-item nav-item-icon">
+      <a href="#"><i class="ion-gear-a"></i> Settings</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="logout" (click)="logout()"> Logout </a>
+    </li>
+  </ul>
+
+</nav>
+<div class="container">
+
+
+  <div class="content">
+    <header class="feed">
+      <a href="#" class="your-feed">
+        Your Feed
+      </a>
+      <a href="#" class="global-feed">
+        Global Feed
+      </a>
+
+    </header>
+
+    <main>
+      <div *ngIf="articles$ | async as articles ; else loading">
+        <div *ngFor="let art of articles">
+
+          <article class="article">
+            <div class="article-profile">
+
+              <div class="article-meta">
+                <a href="#">
+                  <img src={{art.author.image}} alt="profile">
+                </a>
+                <div class="article-profile-meta">
+                  <a href="#" class="article-profile-name">{{art.author.username}}</a>
+                  <p class="article-profile-date">{{art.updatedAt | date}}</p>
+                </div>
+              </div>
+              <span class="article-meta-favorites">
+                <a href="#" class="favorites">
+                  <i class="ion-heart"></i>
+                  <p>{{art.favoritesCount}}</p>
+                </a>
+              </span>
+
+            </div>
+            <a href="#" class="article-post">
+              <div class="post-title">
+                <h1>{{art.title}}</h1>
+              </div>
+              <div class="post-description">
+                <h2>
+                  {{art.description}} </h2>
+              </div>
+              <div class="post-footer">
+                <h2>Read more...</h2>
+                <div>
+                  <ul class="post-list">
+                    <li class="post-item" *ngFor="let tag of art.tagList">
+                      <a href="#"><span style="color:#aaa;">{{tag}}</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </a>
+
+          </article>
+        </div>
+        <div class="pagination">
+          <ul class="pagination-list">
+
+            <li class="pagination-item link-active"> <a href="#"><span style="color:white;">1</span></a></li>
+            <li class="pagination-item"> <a href="#">2</a></li>
+            <li class="pagination-item"> <a href="#">3</a></li>
+            <li class="pagination-item"> <a href="#">4</a></li>
+            <li class="pagination-item"> <a href="#">5</a></li>
+            <li class="pagination-item"> <a href="#">6</a></li>
+            <li class="pagination-item"> <a href="#">7</a></li>
+            <li class="pagination-item"> <a href="#">8</a></li>
+            <li class="pagination-item"> <a href="#">9</a></li>
+            <li class="pagination-item"> <a href="#">11</a></li>
+            <li class="pagination-item"> <a href="#">12</a></li>
+            <li class="pagination-item"> <a href="#">13</a></li>
+            <li class="pagination-item"> <a href="#">14</a></li>
+            <li class="pagination-item"> <a href="#">15</a></li>
+            <li class="pagination-item"> <a href="#">16</a></li>
+            <li class="pagination-item"> <a href="#">17</a></li>
+            <li class="pagination-item"> <a href="#">18</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <aside>
+    <p>Popular Tags</p>
+    <ul *ngIf="tags$ | async as tags ; else loading">
+      <li class="article-tag" *ngFor="let tag of tags">{{tag}}</li>
+      <!-- <li class="article-tag">welcome</li>
+      <li class="article-tag">introduction</li>
+      <li class="article-tag">codebaseShow</li>
+      <li class="article-tag">ipsum</li>
+      <li class="article-tag">qui</li>
+      <li class="article-tag">et</li>
+      <li class="article-tag">quia</li>
+      <li class="article-tag">cupidate</li>
+      <li class="article-tag">deserunt</li> -->
+    </ul>
+  </aside>
+  <ng-template #loading>
+    Carregando dados...
+  </ng-template>
+</div>

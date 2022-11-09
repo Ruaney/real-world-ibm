@@ -1,0 +1,44 @@
+.container {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+
+  .error {
+    color: red;
+  }
+
+  input {
+    width: 100%;
+    border: 0.2px solid gray;
+    margin: 0.6em 0; //substituir por gap ?
+    padding: 10px 20px;
+    border-radius: 0.5em;
+  }
+/*botao formulario*/
+  button {
+    border-radius: 0.5em;
+    width: 6em;
+    background-color: rgb(6, 184, 30);
+    color: white;
+    align-self: flex-end;
+    outline: none;
+    border: none;
+    padding: 10px;
+  }
+
+  .form-btn {
+    align-self: flex-end;
+  }
+}
+
+.tittle {
+  font-size: 40px;
+}

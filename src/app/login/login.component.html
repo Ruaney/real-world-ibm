@@ -1,0 +1,20 @@
+<div class="container">
+  <app-header></app-header>
+  <h1 class="tittle">Login</h1>
+  <a [routerLink]="['/cadastrar']">Precisa de uma conta?</a>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Email" formControlName="inputEmail" class="name">
+    <input class="password" placeholder="Senha" formControlName="inputPassw" type="password">
+    <ng-container *ngIf="state$ | async as state">
+
+      <div class="form-btn">
+        <button type="submit" [disabled]="formGroup.invalid || state.isLoading"
+          [ngStyle]="{'background-color': state.isLoading? 'gray':  'green' }">
+          Logar</button>
+      </div>
+
+      <div class="error">{{state.loginRequestStatus === 'error' ? 'deu erro, email ou senha errado' : ''}}</div>
+      <div class="isLoading">{{state.isLoading ? 'aguarde...' : ''}}</div>
+    </ng-container>
+  </form>
+</div>

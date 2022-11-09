@@ -1,0 +1,41 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.tittle {
+  font-size: 40px;
+}
+#error{
+  color: red;
+}
+form {
+  width: 100%;
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em auto;
+    gap: 1em;
+  }
+  
+  fieldset input {
+    border-radius: 0.5em;
+    border: gray 0.2px solid;
+    padding: 10px 20px;
+  }
+
+  fieldset button {
+    border-radius: 0.5em;
+    width: 6em;
+    background-color: rgb(6, 184, 30);
+    color: white;
+    align-self: flex-end;
+    outline: none;
+    border: none;
+    padding: 10px;
+  }
+}
