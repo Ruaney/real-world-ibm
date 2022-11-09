@@ -1,23 +1,25 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { map, Observable } from "rxjs";
-import { LoginService } from "./login/login-service.service";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginGuard implements CanActivate {
-  constructor(private loginService: LoginService) { }
+  haveToken = sessionStorage.getItem('token') ? true : false;
+  constructor(private router:Router) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this.isAuthenticated();
+    //geralmente usam route e state pra ver as routas child?
+      return this.isAuthenticated() ;
     }
     
     isAuthenticated() {
-      if (sessionStorage.getItem('token') !== null) {
+      if (this.haveToken ) {
         return true;
       } else {
+        this.router.navigateByUrl('/login');
         return false
       }
     }

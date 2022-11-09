@@ -56,7 +56,7 @@ describe('TokenInterceptor', () => {
 
     expect(interceptor).toBeTruthy();
   });
-  test('should go through funcion intercept', (done) => {
+  test('should go through function intercept', (done) => {
     const endpoint = `${API_URL}/articles`;
     sessionStorage.setItem('token', '1234')
     const getItemSpy = jest.spyOn(window.sessionStorage, 'getItem');
